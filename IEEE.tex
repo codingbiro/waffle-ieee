@@ -33,7 +33,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Securing IoT Firmware Dispatch System with Blockchain
+\title{Securing IoT Firmware Dispatch Systems with Blockchain
 %{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and should not be used}
 %\thanks{Identify applicable funding agency here. If none, delete this.}
 }
@@ -52,7 +52,7 @@ Vince Bir\'{o},  Wei-Yang Chiu, and Weizhi Meng %and
 \maketitle
 
 \begin{abstract}
-Internet-of-Things (IoT) devices have become a prevalent part of everyday life, making the need for IoT firmware security greater than ever. Firmware dispatch systems play a crucial role in maintaining the secure operations of IoT devices, where a compromise on the integrity of dispatches may simply ruin an IoT device. Hence it is essential to have robust solutions to safeguard such systems. With the advent of blockchain and Web3 technologies, there are new options of tackling security-related challenges. Blockchain provides a tamper-proof, secure, and fully distributed protocol, making it an excellent choice for a firmware dispatch system. In this work, we explore the existing blockchain-based solutions for distributing IoT firmware updates, and then propose a secure firmware dispatch system for IoT devices using Ethereum. Our system employs Web3.Storage, with the InterPlanetary File System and a peer-to-peer hypermedia protocol. In the evaluation, we demonstrate that our designed architecture is fast, reliable, and scalable by offering a firmware integrity validation. It can benefit a wide range of manufacturers who intend to increase the security of their IoT devices.
+Internet-of-Things (IoT) devices have become a prevalent part of everyday life, making the need for IoT firmware security greater than ever. Firmware dispatch systems play a crucial role in maintaining the secure operations of IoT devices, where a compromise on the integrity of dispatches may simply ruin an IoT device. Hence it is essential to have robust solutions to safeguard such systems. With the advent of blockchain and Web3 technologies, there are new options for tackling security-related challenges. Blockchain provides a tamper-proof, secure, and fully distributed protocol, making it an excellent choice for a firmware dispatch system. In this work, we explore the existing blockchain-based solutions for distributing IoT firmware updates, and then propose a secure firmware dispatch system for IoT devices using Ethereum. Our system employs Web3.Storage, a hosted implementation of the InterPlanetary File System (IPFS), a peer-to-peer hypermedia protocol. In the evaluation, we demonstrate that our designed architecture is fast, reliable, and scalable by offering a firmware integrity validation. It can benefit a wide range of manufacturers who intend to increase the security of their IoT devices.
 
 %This thesis explores the existing blockchain-based solutions for distributing IoT firmware updates. Furthermore, it proposes a secure firmware dispatch system for IoT devices using Ethereum. The system employs Web3.Storage, a hosted implementation of the InterPlanetary File System, a peer-to-peer hypermedia protocol. The proposed architecture is a fast, reliable, and scalable system offering a firmware integrity validation protocol. It can benefit a wide range of manufacturers who intend to increase the security of their IoT devices.
 \end{abstract}
@@ -64,7 +64,7 @@ Blockchain, Dispatch system, Internet of Things, IPFS, Hypermedia protocol, Ethe
 %\verb|{eqnarray}|
 
 \section{Introduction}
-Internet-of-Things (IoT) devices can offer many benefits (e.g., convenience) while also suffering various security challenges. In 2019, the Taiwan-based tech giant ASUS was believed to have had its update server compromised by hackers. Researchers estimated half a million devices affected during the incident. To worsen the situation, the incident remained undiscovered for over a month. The infected devices may receive malicious firmware, which allows the cyber-adversaries to install a backdoor~\cite{Zetter}. The same incident happened to Gigaset in 2021--a German smartphone manufacturer. The attackers were able to install arbitrary software on the devices~\cite{THN}. These incidents highlight the importance of firmware security and verifiability when it comes to IoT devices.
+Internet-of-Things (IoT) devices can offer many benefits (e.g., convenience) while also suffering various security challenges. In 2019, the Taiwan-based tech giant ASUS was believed to have had its update server compromised by hackers. Researchers estimated half a million affected devices during the incident. To worsen the situation, the incident remained undiscovered for over a month. The infected devices may receive malicious firmware, which allows the cyber-adversaries to install a backdoor~\cite{Zetter}. The same incident happened to Gigaset in 2021--a German smartphone manufacturer. The attackers were able to install arbitrary software on the devices~\cite{THN}. These incidents highlight the importance of firmware security and verifiability when it comes to IoT devices.
 
 In recent years, IoT devices have become an essential part of everyday life. While being connected to the Internet provides many opportunities for users, it also comes with a greater need for security protection. According to a survey from 2021 made by the Open Web Application Security Project (OWASP), firmware integrity failures are one of the top ten vulnerabilities in applications~\cite{OWASP1}. In 2018, OWASP concluded that insecure update mechanisms are one of the most common issues with IoT devices~\cite{OWASP2}.
 
@@ -100,7 +100,7 @@ To fill this gap in the available research and to address these challenges, our 
 
 \begin{itemize}
     \item We propose a secure firmware dispatch system for IoT devices using blockchain, which provides a protocol for verifying firmware integrity in a cryptographic way.
-    \item We also introduce a highly practical approach by implementing our proposed system with a DApp and a client application. It also involves the assessment of the chosen technologies, as well as analyse of the implementation from a security and performance point of view.
+    \item We also introduce a highly practical approach by implementing our proposed system with a DApp and a client application. It also involves the assessment of the chosen technologies, as well as the analysis of the implementation from a security and performance point of view.
 \end{itemize}
 
 %As we previously discussed that the maintenance records within the aviation industry require high integrity and traceability, we are encouraged to put Blockchain into the domain. In order to make the system more practical and closer to real world, we developed AirChain - a Blockchain-based aircraft maintenance record system, with the CLB, TLB and their partial procedure provided by China Airline, that is suitable for the real world.
@@ -131,7 +131,7 @@ Krejci \emph{et al.}~\cite{Krejci2020} presented an architecture for IoT devices
 
 In summary, there have been several research studies utilizing blockchain and Ethereum. When it comes to file storage, there are examples of both centralized and decentralized solutions. In the latter, IPFS and Swarm technologies are used. The architecture of these systems usually includes a gateway to free the IoT devices from the burden of communication with the blockchain network. Table~\ref{tab:LiteratureComparison} provides a comparison among existing solutions regarding blockchain type, storage, deployment and feature.
 
-In this work, we propose a scalable, performant, and secure architecture by using a hosted IPFS and a private Ethereum network. Our solution differs from the existing studies because it involves a unique approach to the file storage implementation. The solution offers decentralized storage with a fast HTTP IPFS gateway without the need of dedicated infrastructure, yet it can guarantee all the benefits of IPFS. 
+In this work, we propose a scalable, performant, and secure architecture by using a hosted IPFS and a private Ethereum network. Our solution differs from the existing studies because it involves a unique approach to the file storage implementation. The solution offers decentralized storage with a fast HTTP IPFS gateway without the need for dedicated infrastructure, yet it can guarantee all the benefits of IPFS. 
 
 Below are some background on the concepts used in this work.
 
@@ -162,7 +162,7 @@ In addition, we define three major actors within the proposed  system, including
 
 \subsection{Design Requirements}
 
-Here we introduce the system requirements to explain the motivation behind some of the design decisions made for the system model. Generally, the system generally has to meet the following three security conditions: confidentiality, integrity, and availability, in addition to scalability and performance.
+Here we introduce the system requirements to explain the motivation behind some of the design decisions made for the system model. Generally, the system has to meet the following three security conditions: confidentiality, integrity, and availability, in addition to scalability and performance.
 
 \begin{itemize}
 \item \texttt{Confidentiality.} This is about securing the data from unauthorized actors. When it comes to firmware updates, a vendor may want to protect their update from the public. However, in some cases, this is not important as long as the update's integrity is preserved. Since blockchain is a public ledger, everything is accessible to the public by default. Thus, it is crucial to address the question of confidentiality for the specific use cases. In this work, we aim to introduce a general-purpose firmware dispatch system; hence, it must provide a way to ensure the confidentiality of firmware updates.
@@ -171,7 +171,7 @@ Here we introduce the system requirements to explain the motivation behind some 
 
 \item \texttt{Availability.} While securing the confidentiality and integrity of the data is essential, it is of no use if the data is unavailable. Therefore, the proposed system model must be highly available. It must also be resilient against attacks targeting the system's availability, typically called DoS attacks, where intruders try to disrupt the service by overwhelming the network with traffic. %DoS attacks might be distributed if the attack is not performed from a single source but rather from a network of computers.
 
-\item \texttt{Scalability.} There are some other requirements for a general case firmware dispatch system. One of these is the scalability of the system. To make a future-proof system, one needs to be able to scale up (or down) both the storage and the blockchain nodes of it. Further, it must provide a seamless experience regarding the speed of uploads and downloads. Some blockchain and storage solutions might take some time to finalize transactions and distribute the files. Therefore, it is essential to assess this property and to guarantee the speed and the viability of the proposed solution.
+\item \texttt{Scalability.} There are some other requirements for a general case firmware dispatch system. One of these is the scalability of the system. To make a future-proof system, one needs to be able to scale up (or down) both the storage and the blockchain nodes of it. Furthermore, it must provide a seamless experience regarding the speed of uploads and downloads. Some blockchain and storage solutions might take some time to finalize transactions and distribute the files. Therefore, it is essential to assess this property and to guarantee the speed and the viability of the proposed solution.
 
 \item \texttt{Performance.} Another requirement stemming from the generality of the system is that the performance metrics of the IoT devices must be taken into consideration. One cannot assume that an IoT device can act as an active node in the network as it might not have the networking and computing capabilities to participate in it. This might be caused by a limitation in bandwidth, computing power, or some other characteristics of the device.
 
@@ -192,7 +192,7 @@ The network nodes are full Ethereum nodes, and they are responsible for verifyin
 
 \subsubsection{File storage nodes}
 
-We select \texttt{Web3.Storage} for storing the files, which employs Interplanetary File System (IPFS) under the hood and eliminates the need to self-maintain storage nodes. As a consequence, the nodes for file storage are managed by \texttt{Web3.Storage}, and the two systems can communicate over the public Internet via HTTPs.
+We select \texttt{Web3.Storage} for storing the files, which employs Interplanetary File System (IPFS) under the hood and eliminates the need to self-maintain storage nodes. As a consequence, the nodes for file storage are managed by \texttt{Web3.Storage}, and the two systems can communicate over the public Internet via HTTPS.
 
 \subsubsection{Gateway and IoT fleet}
 
@@ -227,7 +227,7 @@ Archive (\texttt{CAR}) and calculates the \texttt{CID}. Then, it uploads the fil
 The retrieval process is always initiated by a client. It can reach it by querying the smart contract for available updates. Then, it can choose an update and construct the download URL from its \texttt{CID}. It downloads the update via the HTTP IPFS gateway w3link. Once the file is retrieved, the client needs a cryptographic proof of integrity of the update, that is why there is a need for an integrity verification protocol.
 
 %The integrity of the files is based on \texttt{CID}, which were introduced in the previous chapter.
-\texttt{CIDs} are created by hashing a representation of the file uploaded to the storage and by some additional information as a prefix. This process results in a unique \texttt{CID} for each file, which can be used later as proof of being tamper-free. Since IPFS and Web3.Storage use \texttt{CID} for addressing the files, the integrity is preserved by definition at the storage level. When the server transmits the file to the client, it can locally calculate the \texttt{CID} for the downloaded file and compare it with the received \texttt{CID} from the smart contract. Hence, the client has a cryptographic proof of integrity if the two \texttt{CIDs} are identical. The firmware integrity verification flow can be seen in Figure\ref{fig:POI}.
+\texttt{CIDs} are created by hashing a representation of the file uploaded to the storage and by some additional information as a prefix. This process results in a unique \texttt{CID} for each file, which can be used later as proof of being tamper-free. Since IPFS and Web3.Storage use \texttt{CID} for addressing the files, the integrity is preserved by definition at the storage level. When the server transmits the file to the client, it can locally calculate the \texttt{CID} for the downloaded file and compare it with the received \texttt{CID} from the smart contract. Hence, the client has a cryptographic proof of integrity if the two \texttt{CIDs} are identical. The firmware integrity verification flow can be seen in Figure~\ref{fig:POI}.
 
 
 
@@ -236,7 +236,7 @@ The retrieval process is always initiated by a client. It can reach it by queryi
 It was necessary to consider some issues during the design and the implementation of our proposed system. Certain aspects are out of the scope due to the complexity. Hence, our work considers the following context-specific simplifications and approximations.
 
 \begin{itemize}
-\item \texttt{Secure communications.} Each network participant is assumed to use secure communication channels via some forms of encryption, for example, HTTPs communication with TLS 1.3. The networks used in the architecture are also presumed to be as restrictive as possible, which means external communication is only allowed if needed.
+\item \texttt{Secure communications.} Each network participant is assumed to use secure communication channels via some form of encryption, for example, HTTPS communication with TLS 1.3. The networks used in the architecture are also presumed to be as restrictive as possible, which means external communication is only allowed if needed.
 
 \item \texttt{Secure runtime.} The proposed architecture and the implementation of the system are expected to be run as is without modification. Therefore, it is assumed that the hardware executing the code can guarantee secure runtime and is protected against physical and software-based attacks. One potential solution is to utilize a Trusted Platform Module (TPM)--a specialized chip. %Although the details about TPM and its implementation go beyond the scope of this research, in essence, it enables secure boot, hardware-level encryption, and system integrity checks.
 
@@ -248,7 +248,7 @@ It was necessary to consider some issues during the design and the implementatio
 \section{Implementation and Evaluation} \label{sec:4}
 
 \subsection{System Implementation}
-In this part, we describe the development environment, the implementation of smart contract, and the client application (named Waffle).
+In this part, we describe the development environment, the implementation of the smart contract, and the client application (named Waffle).
 The source code of the project is available at \url{https://github.com/codingbiro/waffle}. It contains the smart contract, the network scripts, the compilation scripts, the deployment scripts, and the client application.
 
 %\subsubsection{Development environment}
@@ -262,12 +262,12 @@ For implementation, we set up a local Ethereum development network using Hardhat
 Saving the output of the command can automatize the process later on. The output contains information like the network's address on \texttt{localhost} and the default accounts.
 
 \subsubsection{Remix}
-It is an IDE for Ethereum smart contract development, which can be used in a browser. Remix provides an editor based on the same fundamentals as Visual Studio Code. It supports linting, compiling, and deploying smart contract written in Solidity. It allows switching between Solidity versions conveniently, and then it can export the compiled file to IPFS, Swarm, or the host machine.
+It is an IDE for Ethereum smart contract development, which can be used in a browser. Remix provides an editor based on the same fundamentals as Visual Studio Code. It supports linting, compiling, and deploying smart contracts written in Solidity. It allows switching between Solidity versions conveniently, and then it can export the compiled file to IPFS, Swarm, or the host machine.
 
 
 \subsubsection{Smart contract}
 
-We developed an Ethereum smart contract (SC) using Solidity. It is responsible for keeping track of the available updates with some metadata attached to them. The final version of smart contract's source code can refer to the project link.
+We developed an Ethereum smart contract (SC) using Solidity. It is responsible for keeping track of the available updates with some metadata attached to them. The final version of the smart contract's source code is available via the project link.
 
 The system has three user groups: the owner, the updater, and the regular users. The owner is set in the smart contract's constructor based on whoever deploys the SC. The updaters are people with access to firmware update creation and editing. Regular users have access to the blockchain and can call the unrestricted public functions of the smart contract.
 
@@ -329,7 +329,7 @@ Having defined the structure of the updates, the updater guard, and the version 
 
 \subsubsection{Linting}
 
-We utilized an Node Package Manager (NPM) package called \texttt{solhint} for linting our Solidity code. This package provides security and style guide validations. We configured \texttt{solhint} to extend their shareable configuration called \texttt{solhint:recommended}. This configuration provided our system with a solid base for writing coherent and secure smart contract. 
+We utilized a Node Package Manager (NPM) package called \texttt{solhint} for linting our Solidity code. This package provides security and style guide validations. We configured \texttt{solhint} to extend their shareable configuration called \texttt{solhint:recommended}. This configuration provided our system with a solid base for writing coherent and secure smart contracts.
 
 
 \subsection{Client Application}
@@ -342,14 +342,14 @@ The backend endpoints are defined in a directory called \texttt{src/routes/api}.
 
 The core functionality is implemented in the Updates and the Update endpoints. The Updates endpoint can return all updates (or an empty array). It also enables new firmware creation by accepting a \texttt{CreateUpdateInput} (defined in the smart contract) with \texttt{Method='POST'}, which creates a new firmware update if the input is valid. The Update endpoint resides at \texttt{/updates/[id]}, where \texttt{id} is a dynamic parameter. The dynamic parameter here refers to the id of a firmware update; for example, a firmware with \texttt{id=10} would be available at \texttt{GET /updates/10}. This route is also used to edit updates with the \texttt{PUT} request method, where the input is expected to be of type \texttt{EditUpdateInput} (also defined in the smart contract).
 
-We employed two helper functions that enable us to use Web3 and Web3.Storage, named \texttt{web3Helper} and \texttt{web3storageHelper} respectively. The first one creates a Web3 HTTP instance \& a Contract instance, initializes the default account, and handles relevant errors. The second one creates a Web3.Storage instance. We can avoid code duplication and optimize memory usage with these helpers.
+We employed two helper functions that enabled us to use Web3 and Web3.Storage, named \texttt{web3Helper} and \texttt{web3storageHelper} respectively. The first one creates a Web3 HTTP instance \& a Contract instance, initializes the default account, and handles relevant errors. The second one creates a Web3.Storage instance. We can avoid code duplication and optimize memory usage with these helpers.
 
 Here we describe the Updates endpoint in detail, as it contains the most essential parts of the backend. To retrieve all updates, it uses \texttt{web3Helper} to call the smart contract's \texttt{getFirmwareUpdates} method and returns them in a JSON response (or throws an error). When creating a new firmware update, the endpoint expects a POST request with an input in a \texttt{FormData} object. If the input is valid, it calls a function that handles the upload. The upload handler uses \texttt{web3storageHelper} to upload the file to Web3.Storage. Before uploading it, it builds the \texttt{CAR} locally and saves its \texttt{CID}. Once the upload is done, it compares the local \texttt{CID} with the one returned from Web3.Storage. If they are matched, it returns the \texttt{CID}; otherwise, it throws an error. Next, the update has to be saved to the blockchain. To achieve this, the input is prepared for it, and the gas cost of the operation is estimated utilizing \texttt{web3Helper}. Then, it calls the smart contract's \texttt{createFirmwareUpdate} method through \texttt{web3Helper}. Finally, it returns the \texttt{CID} unless there is an error. %The source code of the Updates API endpoint can be found in Appendix~\ref{chap:api}.
 
 
 \subsubsection{Frontend}
 
-The frontend of the application consists of three routes. Route \texttt{/} has a permanent server-side redirected to the second route \texttt{/dashboard}. The route \texttt{/information} displays the system information.
+The frontend of the application consists of three routes. Route \texttt{/} has a permanent server-side redirect to the second route \texttt{/dashboard}. The route \texttt{/information} displays the system information.
 
 The dashboard page facilitates the CRUD operations for updates. It displays all updates in a table with all of their details, which can be seen in Figure~\ref{fig:Waffle}. Each row is clickable, which allows users to view the details of an update in a modal. Users can download and edit the firmware via the modal. The download feature uses \texttt{w3link} to retrieve the file. The modal for firmware editing can be seen in Figure~\ref{fig:Edit}. The dashboard incorporates the creation of a new update. Once all fields are filled out, and the user clicks save, it performs the firmware update process creation and refreshes the list of updates. %It is done through a similar modal to Figure~\ref{fig:Edit}, but it also lets the user input the file.
 
@@ -365,15 +365,15 @@ The dashboard page facilitates the CRUD operations for updates. It displays all 
 
 \subsection{System Evaluation}
 
-\subsubsection{Main idea} We validate the proposed system by first showing that there is no way one can change an update after publishing a firmware update. Then, we show that a client can always get a proof of integrity when retrieving an update.
+\subsubsection{Main idea} We validate the proposed system by first showing that there is no way one can change an update after publishing a firmware update. Then, we show that a client can always get proof of integrity when retrieving an update.
 
 As shown in Figure~\ref{fig:Publication}, when a user initiates the publication of a new firmware update, the client locally builds the CAR and saves the file's \texttt{CID}. Then, it uploads the \texttt{CAR} to \texttt{Web3.Storage} and retrieves its \texttt{CID}. At this point, the client application has two \texttt{CIDs}: one is calculated locally and one is received from the server. The client compares these two and only continues the execution if they are identical. Then, it finalizes the update by adding its details to the blockchain, providing an immutable record. The \texttt{CID} of a file is always based on its contents, and any change in the contents will result in a different \texttt{CID}. Hence, if someone tries to change the firmware later on, then the \texttt{CID} of the file will be changed on IPFS, and will not match with the value from the blockchain network.
 
-Then, if a client wants to ensure the integrity of a retrieved firmware update, it can get a proof of it with some simple steps. First, it queries the blockchain for information about one update containing the \texttt{CID} and the file URL. Then, it retrieves the update through \texttt{Web3.Storage}. Finally, it calculates the \texttt{CID} of the retrieved file locally, and if it does not match what it received from the blockchain, it discards the file.
+Then, if a client wants to ensure the integrity of a retrieved firmware update, it can get proof of it with some simple steps. First, it queries the blockchain for information about one update containing the \texttt{CID} and the file URL. Then, it retrieves the update through \texttt{Web3.Storage}. Finally, it calculates the \texttt{CID} of the retrieved file locally, and if it does not match what it received from the blockchain, it discards the file.
 
 \subsubsection{Performance tests}\label{sec:test}
 
-We performed two tests to explore the performance and benchmark the storage provider. In both tests, we benchmark the upload and distribution speed. The distribution speed means retrieving the uploaded file from a different device. So we focus on testing the download speed. We run these tests three times with differing file sizes: 2 MB, 11 MB, and 48 MB.
+We performed two tests to explore the performance and benchmark the storage provider. In both tests, we benchmark the upload and distribution speed. The distribution speed means retrieving the uploaded file from a different device. So we focus on testing the download speed. We ran these tests three times with differing file sizes: 2 MB, 11 MB, and 48 MB.
 
 \begin{figure}[t]
 \centering
@@ -410,7 +410,7 @@ We also performed additional tests on six firmware updates from the computer net
 \end{figure}
 
 
-Further, we compared the time differences in each case between the runs since the \texttt{CID} is the same on the second and the third attempts. To highlight the results, we measured the difference between runs in upload/download speeds. These changes are summarized in Figure~\ref{fig:sum}, which shows the change in percentages between the first and the second run and between the second and the third run. We highlighted the outstanding changes with red (more significant differences) and orange. We also show the file size for each case and the time consumption of first run.
+Moreover, we compared the time differences in each case between the runs since the \texttt{CID} is the same on the second and the third attempts. To highlight the results, we measured the difference between runs in upload/download speeds. These changes are summarized in Figure~\ref{fig:sum}, which shows the change in percentages between the first and the second run and between the second and the third run. We highlighted the outstanding changes with red (more significant differences) and orange. We also show the file size for each case and the time consumption of the first run.
 
 \begin{figure}[t]
 \centering
@@ -424,14 +424,14 @@ Further, we compared the time differences in each case between the runs since th
 
 \section{Discussion} \label{sec:5}
 
-In this section, we discuss the performance of our proposed system regarding security, privacy, and performance, in addition to the usage of gateway and file-storage.
+In this section, we discuss the performance of our proposed system regarding security, privacy, and performance, in addition to the usage of a gateway and file-storage.
 
 \subsection{Security and privacy analysis}
 We assess the system from a security and privacy point of view, with the following aspects: user authentication, upload encryption, integrity verification, blockchain deployment type, and network attacks.
 
 \begin{itemize}
     \item \texttt{User authentication.} Keys are pre-distributed for clients, and access to the client is managed by the vendor. The security can be enhanced by utilizing MultiSig wallets and key revocation. MultiSig wallets can be used to enhance security by requiring more than one signature on each transaction. Consequently, attackers need to obtain all signer-keys to succeed, making the attack much more complex. Key revocation can be helpful when a key is compromised. The two solutions combined can fulfill the security requirements for high-risk applications.
-    \item \texttt{Upload encryption.} Content is addressed with \texttt{CID} in the system; thus, one has to know the \texttt{CID} of a file to retrieve it. Retrieval becomes hard without knowing the \texttt{CID}. This level of obscurity is enough for many use cases. On the other hand, a company might want to further enhance the privacy of these files. Privacy enhancement can be done by encrypting the files before uploading them, which could be a simple step before creating the \texttt{CAR} on the server. For example, CryptoJS--a JavaScript library  could be used to encrypt and decrypt files with the AES standard and a pre-distributed secret without adding much overhead to the system. Encryption would increase the privacy aspect of the system, making unauthorized access to the file contents practically impossible.
+    \item \texttt{Upload encryption.} Content is addressed with \texttt{CIDs} in the system; thus, one has to know the \texttt{CID} of a file to retrieve it. Retrieval becomes hard without knowing the \texttt{CID}. This level of obscurity is enough for many use cases. On the other hand, a company might want to further enhance the privacy of these files. Privacy enhancement can be done by encrypting the files before uploading them, which could be a simple step before creating the \texttt{CAR} on the server. For example, CryptoJS--a JavaScript library  could be used to encrypt and decrypt files with the AES standard and a pre-distributed secret without adding much overhead to the system. Encryption would increase the privacy aspect of the system, making unauthorized access to the file contents practically impossible.
         
     \item \texttt{Verifying a file.} A protocol for ensuring file integrity was validated previously in Section~\ref{sec:5}-B. The process provides a secure and straightforward approach to get cryptographic proof of data authenticity. Hence, system participants can have a reliable and performant way to verify files.
         
@@ -450,15 +450,15 @@ The performance tests indicate that \texttt{Web3.Storage} offers a robust soluti
 
 \subsection{Comparison to related solutions}
 
-When comparing the performance of our proposed system to similar ones introduced in Section~\ref{sec:2}. Our proposed architecture utilizes a gateway device that forwards updates to the IoT devices. Using a gateway is considerably better compared to having IoT devices connect directly to the blockchain network since these devices may not fulfill the minimum requirements to use the network reliably. In addition, the gateway device may reduce bandwidth requirements in the IoT devices, perform pre-processing on the updates (e.g., decryption), and reduce latency.
+When comparing the performance of our proposed system to similar ones introduced in Section~\ref{sec:2}, our proposed architecture utilizes a gateway device that forwards updates to the IoT devices. Using a gateway is considerably better compared to having IoT devices connect directly to the blockchain network since these devices may not fulfill the minimum requirements to use the network reliably. In addition, the gateway device may reduce bandwidth requirements in the IoT devices, perform pre-processing on the updates (e.g., decryption), and reduce latency.
 
-Regarding the file-storage solution, \texttt{Web3.Storage} offers several advantages. It is a highly scalable, cloud-native implementation of IPFS with solid performance and reliability. When it comes to other hosted IPFS solutions, \texttt{Web3.Storage} stands out by involving an IPFS HTTP gateway that is at least 2-3 times faster than other gateways~\cite{3perf}. Further, with the help of Filecoin deals, \texttt{Web3.Storage} users can ensure that their files are being stored on IPFS by the desired number of replicates.
+Regarding the file-storage solution, \texttt{Web3.Storage} offers several advantages. It is a highly scalable, cloud-native implementation of IPFS with solid performance and reliability. When it comes to other hosted IPFS solutions, \texttt{Web3.Storage} stands out by involving an IPFS HTTP gateway that is at least 2-3 times faster than other gateways~\cite{3perf}. In addition, with the help of Filecoin deals, \texttt{Web3.Storage} users can ensure that their files are being stored on IPFS by the desired number of replicates.
 
 
 \section{Conclusion} \label{sec:6}
 IoT devices have become prevalent in everyone's day-to-day life. Thus, there is an increased need for IoT security, in which firmware dispatch systems play a crucial role. This work aimed to look at blockchain-based firmware dispatch solutions to provide a more reliable and secure architecture for IoT updates.
 
-In this work, we proposed and implemented a firmware dispatch system that consists of the following components: a smart contract, a network setup script, and a client application for vendors. The implementation enables its users to store and retrieve firmware updates in a decentralized manner, utilizing blockchain and IPFA. Our system allows fast and reliable firmware updates while keeping the operational tasks relatively easy. The simplicity and speed of the system did not compromise security and privacy, and the integrity of the files was guaranteed. Our designed client application showcased the system's capabilities in a practical way from a vendor's point of view. It enables interaction with the proposed system through a web interface, and it also acts as an assessment of the available technologies that enable Web3 applications in a browser.
+In this work, we proposed and implemented a firmware dispatch system that consists of the following components: a smart contract, a network setup script, and a client application for vendors. The implementation enables its users to store and retrieve firmware updates in a decentralized manner, utilizing blockchain and IPFS. Our system allows fast and reliable firmware updates while keeping the operational tasks relatively simple. The simplicity and speed of the system did not compromise security and privacy, and the integrity of the files was guaranteed. Our designed client application showcased the system's capabilities in a practical way from a vendor's point of view. It enables interaction with the proposed system through a web interface, and it also acts as an assessment of the available technologies that enable Web3 applications in a browser.
 
 
 
